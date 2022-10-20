@@ -36,7 +36,7 @@ public class Vaga {
         return obliqua;
     }
 
-    public void setObliquo(boolean obliqua) {
+    public void setObliqua(boolean obliqua) {
         this.obliqua = obliqua;
     }
     

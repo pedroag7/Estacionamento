@@ -14,7 +14,7 @@ public class VagaDAO {
             PreparedStatement stmt = null;
             
             try{
-                stmt = con.prepareStatement("INSERT INTO vaga (numero, rua, obliqua) + VALUES (?,?,?)") ;
+                stmt = con.prepareStatement("INSERT INTO vaga (numero, rua, obliqua)  VALUES (?,?,?)") ;
                 stmt.setInt(1, v.getNumero());
                 stmt.setString(2, v.getRua());
                 stmt.setBoolean(3, v.isObliqua());
