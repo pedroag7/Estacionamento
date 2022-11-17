@@ -10,15 +10,25 @@ import model.dao.MotoristaDAO;
 
 /**
  *
- * @author 01945083077
+ * @author Pedro <your.name at your.org>
  */
-public class JFCadastrarMotorista extends javax.swing.JFrame {
+public class JFAtualizarMotorista extends javax.swing.JFrame {
+    
+        private static int idMotorista;
 
-    /**
-     * Creates new form JFCadastrarMotorista
-     */
-    public JFCadastrarMotorista() {
+    public JFAtualizarMotorista() {
         initComponents();
+          MotoristaDAO mdao = new MotoristaDAO();
+        Motorista m = mdao.read(idMotorista);
+        lblIdVaga.setText(String.valueOf(v.getIdVaga()));
+        jTFNumero.setText(String.valueOf(v.getNumero()));
+        jTFRua.setText(v.getRua());
+        if(v.isObliqua() == true){
+            jRBObliqua.setSelected(true);
+        }else if (v.isObliqua() == false){
+            jRBParalela.setSelected(true);
+        }
+        
     }
 
     /**
@@ -30,33 +40,34 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BGGenero = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
+        jTFEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jRBMasc = new javax.swing.JRadioButton();
+        jTFSenha = new javax.swing.JTextField();
         jRBFem = new javax.swing.JRadioButton();
+        jBtnCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jBtnSalvar = new javax.swing.JButton();
         jTFCelular = new javax.swing.JTextField();
+        jBtnLimpar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jTFRg = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jTFCpf = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTFEmail = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTFSenha = new javax.swing.JTextField();
-        jBtnCancelar = new javax.swing.JButton();
-        jBtnSalvar = new javax.swing.JButton();
-        jBtnLimpar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblIdMotorista = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Cadastrar Motorista");
-
         jLabel2.setText("Nome completo:");
+
+        jLabel8.setText("Email:");
 
         jTFNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,9 +75,16 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
             }
         });
 
+        jTFEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFEmailActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Gênero:");
 
-        BGGenero.add(jRBMasc);
+        jLabel9.setText("Senha:");
+
         jRBMasc.setSelected(true);
         jRBMasc.setText("Masculino");
         jRBMasc.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +93,12 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
             }
         });
 
-        BGGenero.add(jRBFem);
+        jTFSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFSenhaActionPerformed(evt);
+            }
+        });
+
         jRBFem.setText("Feminino");
         jRBFem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,11 +106,27 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
             }
         });
 
+        jBtnCancelar.setText("Cancelar");
+
         jLabel5.setText("RG (apenas números):");
+
+        jBtnSalvar.setText("Salvar");
+        jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSalvarActionPerformed(evt);
+            }
+        });
 
         jTFCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFCelularActionPerformed(evt);
+            }
+        });
+
+        jBtnLimpar.setText("Limpar");
+        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparActionPerformed(evt);
             }
         });
 
@@ -101,43 +140,20 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
 
         jLabel7.setText("DDD + Celular (apenas números):");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        jLabel1.setText("Atualizar Motorista");
+
         jTFCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFCpfActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Email:");
+        jLabel3.setText("aaa");
 
-        jTFEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFEmailActionPerformed(evt);
-            }
-        });
+        jLabel11.setText("Id Motorista");
 
-        jLabel9.setText("Senha:");
-
-        jTFSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFSenhaActionPerformed(evt);
-            }
-        });
-
-        jBtnCancelar.setText("Cancelar");
-
-        jBtnSalvar.setText("Salvar");
-        jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnSalvarActionPerformed(evt);
-            }
-        });
-
-        jBtnLimpar.setText("Limpar");
-        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnLimparActionPerformed(evt);
-            }
-        });
+        lblIdMotorista.setText("aaa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +183,7 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jTFSenha)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 140, Short.MAX_VALUE)
+                                .addGap(0, 132, Short.MAX_VALUE)
                                 .addComponent(jBtnLimpar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jBtnSalvar)
@@ -180,17 +196,31 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel3)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(16, 16, 16))))
+                        .addGap(16, 16, 16))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblIdMotorista)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(lblIdMotorista))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -234,33 +264,21 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNomeActionPerformed
 
-    private void jRBMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMascActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRBMascActionPerformed
-
-    private void jRBFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBFemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRBFemActionPerformed
-
-    private void jTFCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCelularActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFCelularActionPerformed
-
-    private void jTFRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFRgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFRgActionPerformed
-
-    private void jTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFCpfActionPerformed
-
     private void jTFEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFEmailActionPerformed
 
+    private void jRBMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMascActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBMascActionPerformed
+
     private void jTFSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFSenhaActionPerformed
+
+    private void jRBFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBFemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBFemActionPerformed
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
         // TODO add your handling code here:
@@ -282,13 +300,23 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
         m.setSenha(jTFSenha.getText());
 
         dao.create(m);
-
     }//GEN-LAST:event_jBtnSalvarActionPerformed
+
+    private void jTFCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCelularActionPerformed
 
     private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jBtnLimparActionPerformed
+
+    private void jTFRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFRgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFRgActionPerformed
+
+    private void jTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCpfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,31 +335,32 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtualizarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtualizarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtualizarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFCadastrarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFAtualizarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFCadastrarMotorista().setVisible(true);
+                new JFAtualizarMotorista().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup BGGenero;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnLimpar;
     private javax.swing.JButton jBtnSalvar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -346,5 +375,6 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNome;
     private javax.swing.JTextField jTFRg;
     private javax.swing.JTextField jTFSenha;
+    private javax.swing.JLabel lblIdMotorista;
     // End of variables declaration//GEN-END:variables
 }
