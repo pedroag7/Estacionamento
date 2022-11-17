@@ -79,7 +79,7 @@ public class VagaDAO {
          ResultSet rs = null;
          Vaga v = new Vaga();
          try{
-             stmt = con.prepareStatement("Select FROM vaga where idVaga=? LIMIT ';");
+             stmt = con.prepareStatement("Select * FROM vaga where idVaga=? LIMIT 1;");
              stmt.setInt(1, idVaga);
              rs = stmt.executeQuery();
              if(rs != null && rs.next()){
