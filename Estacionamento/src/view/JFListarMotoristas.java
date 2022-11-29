@@ -46,7 +46,7 @@ public class JFListarMotoristas extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
         jLabel1.setText("Listar Motoristas");
 
         jTMotorista.setModel(new javax.swing.table.DefaultTableModel(
@@ -78,6 +78,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         });
 
         jBtnEditar.setText("Editar Motorista");
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
 
         jBtnExcluir.setText("Excluir Motorista");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -91,27 +96,27 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(91, Short.MAX_VALUE)
                         .addComponent(jBtnExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jBtnCadastrar)))
+                        .addComponent(jBtnCadastrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,6 +165,20 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         readJTable();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        if (jTMotorista.getSelectedRow() != -1) {
+            int motoristaSelecionado = (int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0);
+            JFAtualizarMotorista am = new JFAtualizarMotorista(motoristaSelecionado);
+            am.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um motorista!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
+        readJTable();
+
+    }//GEN-LAST:event_jBtnEditarActionPerformed
+
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
         modelo.setNumRows(0);
@@ -173,7 +192,8 @@ public class JFListarMotoristas extends javax.swing.JFrame {
                 m.getRg(),
                 m.getCpf(),
                 m.getCelular(),
-                m.getEmail()
+                m.getEmail(),
+                m.getSenha()
             });
         }
 

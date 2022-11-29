@@ -16,19 +16,22 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     
         private static int idMotorista;
 
-    public JFAtualizarMotorista() {
+    public JFAtualizarMotorista(int idMotorista) {
         initComponents();
-          MotoristaDAO mdao = new MotoristaDAO();
+        MotoristaDAO mdao = new MotoristaDAO();
         Motorista m = mdao.read(idMotorista);
-        lblIdVaga.setText(String.valueOf(v.getIdVaga()));
-        jTFNumero.setText(String.valueOf(v.getNumero()));
-        jTFRua.setText(v.getRua());
-        if(v.isObliqua() == true){
-            jRBObliqua.setSelected(true);
-        }else if (v.isObliqua() == false){
-            jRBParalela.setSelected(true);
+        lblIdMotorista.setText(String.valueOf(m.getIdMotorista()));
+        jTFNome.setText(m.getNome());
+        if(m.isHomem() == true){
+            jRBMasc.setSelected(true);
+        }else if (m.isHomem() == false){
+            jRBFem.setSelected(true);
         }
-        
+              jTFRg.setText(m.getRg());
+              jTFCpf.setText(m.getCpf());
+              jTFCelular.setText(m.getCelular());
+              jTFEmail.setText(m.getEmail());
+              jTFSenha.setText(m.getSenha());
     }
 
     /**
@@ -40,6 +43,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bGTipoGenero = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTFNome = new javax.swing.JTextField();
@@ -85,6 +89,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
 
         jLabel9.setText("Senha:");
 
+        bGTipoGenero.add(jRBMasc);
         jRBMasc.setSelected(true);
         jRBMasc.setText("Masculino");
         jRBMasc.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +104,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
             }
         });
 
+        bGTipoGenero.add(jRBFem);
         jRBFem.setText("Feminino");
         jRBFem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,8 +289,9 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
         // TODO add your handling code here:
         Motorista m = new Motorista();
-        MotoristaDAO dao = new MotoristaDAO();
-
+        MotoristaDAO mdao = new MotoristaDAO();
+        
+        m.setIdMotorista(Integer.parseInt(lblIdMotorista.getText()));
         m.setNome(jTFNome.getText());
 
         if (jRBMasc.isSelected()) {
@@ -299,7 +306,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         m.setEmail(jTFEmail.getText());
         m.setSenha(jTFSenha.getText());
 
-        dao.create(m);
+        mdao.update(m);
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     private void jTFCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCelularActionPerformed
@@ -346,14 +353,16 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAtualizarMotorista().setVisible(true);
+                JFAtualizarMotorista frame = new JFAtualizarMotorista(idMotorista);
+                frame.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bGTipoGenero;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnLimpar;
     private javax.swing.JButton jBtnSalvar;

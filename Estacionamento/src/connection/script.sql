@@ -9,14 +9,15 @@ CREATE TABLE vaga (
     PRIMARY KEY (idVaga));
 
 
-CREATE TABLE motorista(
-    idMotorista int NOT NULL AUTO_INCREMENT,
-    nome varchar(100) NOT NULL,
-    genero varchar(100) NOT NULL,
-    rg int NOT NULL,
-    cpf int NOT NULL,
-    celular int NOT NULL,
-    email varchar(100) NOT NULL,
-    senha varchar(30) NOT NULL,
-    PRIMARY KEY (idMotorista));
 
+CREATE TABLE motorista (
+    idMotorista int NOT NULL AUTO_INCREMENT,
+    nome varchar(250) NOT NULL,
+    homem boolean NOT NULL,
+    rg varchar(10) NOT NULL,
+    cpf varchar(11) NOT NULL,
+    celular varchar(11) NOT NULL,
+    email varchar(250) NOT NULL,
+    senha varchar(250) NOT NULL,
+    PRIMARY KEY (idMotorista)
+);
