@@ -12,7 +12,7 @@ import model.dao.MotoristaDAO;
 
 /**
  *
- * @author 01945083077
+ * @author Pedro
  */
 public class JFListarMotoristas extends javax.swing.JFrame {
 
