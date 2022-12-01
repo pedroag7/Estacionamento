@@ -67,7 +67,8 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         lblIdMotorista = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Atualizar Motorista");
 
         jLabel2.setText("Nome completo:");
 
@@ -113,6 +114,11 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         });
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("RG (apenas números):");
 
@@ -315,6 +321,14 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
 
     private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
         // TODO add your handling code here:
+        jTFNome.setText("");
+        bGTipoGenero.clearSelection();
+        jTFRg.setText("");
+        jTFCpf.setText("");
+        jTFCelular.setText("");
+        jTFEmail.setText("");
+        jTFSenha.setText("");
+        
     }//GEN-LAST:event_jBtnLimparActionPerformed
 
     private void jTFRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFRgActionPerformed
@@ -324,6 +338,11 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     private void jTFCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFCpfActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

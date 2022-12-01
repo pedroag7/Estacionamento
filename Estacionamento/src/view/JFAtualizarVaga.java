@@ -57,7 +57,8 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblIdVaga = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Atualizar Vaga");
 
         jBtnSalvar.setText("Salvar");
         jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +68,11 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         });
 
         jBtnLimpar.setText("Limpar");
+        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparActionPerformed(evt);
+            }
+        });
 
         JBtnCancelar.setText("Cancelar");
         JBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +209,7 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
 
     private void JBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnCancelarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_JBtnCancelarActionPerformed
 
     private void jRBObliquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBObliquaActionPerformed
@@ -216,6 +223,13 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     private void jTFNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNumeroActionPerformed
+
+    private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
+        // TODO add your handling code here:
+        jTFRua.setText("");
+        jTFNumero.setText("");
+        bGTipoVaga.clearSelection();
+    }//GEN-LAST:event_jBtnLimparActionPerformed
 
     /**
      * @param args the command line arguments
